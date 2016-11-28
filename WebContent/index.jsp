@@ -10,6 +10,10 @@
 <h2>Bienvue sur le site Maison des Ligues</h2>
 <p>Portail <a href="#">Adhérent</a></p>
 <p>Portail <a href="#">Trésorier</a></p>
+<<<<<<< HEAD
 salut
+=======
+TOTOtoTO
+>>>>>>> b088342a94b8dbd99591fad49bf99a805eae5416
 </body>
 </html>
