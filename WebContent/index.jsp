@@ -4,16 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<%@ include file="style.css" %>
+</style>
 <title>M2L</title>
 </head>
 <body>
 <h2>Bienvue sur le site Maison des Ligues</h2>
-<p>Portail <a href="#">Adhérent</a></p>
-<p>Portail <a href="#">Trésorier</a></p>
-<<<<<<< HEAD
-salut
-=======
-TOTOtoTO
->>>>>>> b088342a94b8dbd99591fad49bf99a805eae5416
+<div class="corps">
+<div class="cellule1"><p>Portail <a href="#">Adhérent</a></p></div>
+<div class="cellule2"><p>Portail <a href="#">Trésorier</a></p></div>
+</div>
+
+
+
+
 </body>
 </html>
