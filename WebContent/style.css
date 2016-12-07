@@ -4,9 +4,14 @@ body {
   margin: 0px;
 }
 
+h2 {
+  margin-top:0;
+}
+
 .header {
-  height: 150px;
-  background-color: red;
+  line-height:80px;
+  height:80px;
+  background-color: #1AC;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin: 0px;
@@ -16,6 +21,7 @@ body {
 
 .corps {
   width:70%;
+  min-width: 300px;
   min-height: 800px;
   background-color: #CCE8FF;
   margin: 0 auto;
@@ -24,6 +30,7 @@ body {
   flex-direction: row;
   display: -webkit-flex;
   -webkit-flex-direction: row;
+  flex-wrap: wrap;
   
 }
 
@@ -32,20 +39,33 @@ h2  {
 }
 
 .cellule1 {
+  line-height:300px;
   text-align:center;
+  min-width: 300px;
   width: 40%;
   height: 300px;
-  background-color: #6CF;
+  background-color: #DBEFFF;
   margin-left: auto;
   margin-top: 45px;
 }
 
 .cellule2 {
+  line-height:300px;
+  text-align:center;
   width: 40%;
+  min-width: 300px;
   height: 300px;
+  background-color: #DBEFFF;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+}
+.cellule3 {
+  width: 80%;
+  height: 100px;
   background-color: #6CF;
   margin: auto;
-  margin-top: 45px;
+  margin-top: 5px;
 }
 
 label
