@@ -21,7 +21,7 @@
 </div>
 
 <div class="corps">
-	<div class="cellule1"><p><a href="#">Connexion</a></p></div>
+	<div class="cellule1"><p><a href="connexion.jsp">Connexion</a></p></div>
 	<div class="cellule2"><p><a href="inscription.jsp">Inscription</a></p></div>
 	<div class="cellule3"><p><a href="#">Administrateur</a></p></div>
 	<% 
@@ -32,8 +32,7 @@
 	 	ResultSet rs = connect.executionRequete(reqSQL2);
 	 	int eu = connect.executionUpdate(reqSQL);
 	 	
-	 	System.out.printf(reqSQL);
-
+	 
 	   // while (rs.next()) {
 	   //     System.out.printf("%s %s, %s, %s, %s\n", //
 	   //           rs.getString(3), rs.getString(2), rs.getString(4), rs.getString(5),rs.getString(6));

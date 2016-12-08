@@ -8,15 +8,24 @@
 </head>
 <body>
 
+<%
+String nom = (String)session.getAttribute("nom");
+if (nom==null) nom="";
+String prenom = (String)session.getAttribute("prenom");
+if (prenom==null) prenom="";
+String adresse = (String)session.getAttribute("adresse");
+if (adresse==null) adresse="";
+String ville = (String)session.getAttribute("ville");
+if (ville==null) ville="";
+%>
+
 <div class="cellule1">
-      
-      
-      
+
             <form method="post" action="traitement.jsp">
             <fieldset>
               <legend>Inscription</legend>
-                <label for="email">Nom : <span class="requis"></span></label>
-                <input type="text" name="email" size="20" maxlength="60" /><br />
+                <label for="nom">Nom : <span class="requis"></span></label>
+                <input type="text" name="nom" size="20" maxlength="60" /><br />
 
                 <label for="prenom">Prénom : <span class="requis"></span></label>
                 <input type="text" name="prenom" size="20" maxlength="20" /><br />
@@ -33,6 +42,15 @@
                 <label for="tel">Téléphone : <span class="requis"></span></label>
                 <input type="text" name="tel" size="20" maxlength="20" /><br />
                 
+				<% 
+					try {
+				      	if(request.getParameter("erreur").length()>0) {
+				      		out.println("<br><strong>Cette adresse mail est déjà utilisée.</strong><br>");
+				      	}
+					}
+				catch(NullPointerException e){}
+					
+     			 %>
                 <label for="email">Email : <span class="requis"></span></label>
                 <input type="text" name="email" size="20" maxlength="20" /><br />
                 
