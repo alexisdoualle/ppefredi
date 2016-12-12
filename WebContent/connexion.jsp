@@ -7,17 +7,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-<fieldset>
-	<legend>Connexion</legend>
-	
-	<label>Email:</label>
-	<input type="text" name="email" />
-	
-	<label>Mot de passe:</label>
-	<input type="password" name="mdp" />
-	
-</fieldset>
+<form method="post" action="traitementConn.jsp">
+	<fieldset>
+		<legend>Connexion</legend>
+		
+		<label>Email:</label>
+		<input type="text" name="email" /><br />
+					<% 
+						try {
+					      	if(request.getParameter("erreur").length()>0) {
+					      		out.println("<br><strong>Mauvais email/mot de passe.</strong><br>");
+					      	}
+						}
+						catch(NullPointerException e){}
+						
+	     			 %>
+		
+		<label>Mot de passe:</label>
+		<input type="password" name="mdp" /> <br>
+		
+		<input type="submit" value="valider"/>
+		
+	</fieldset>
 </form>
 
 </body>

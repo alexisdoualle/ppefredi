@@ -35,23 +35,19 @@
 	ResultSet rs = connect.executionRequete(verifierMail);
 	if(rs.next()){
 		
-		//JOptionPane.showConfirmDialog(null, "SALUT");
-		
+		// JOptionPane.showConfirmDialog(null, "SALUT");
 		%>
 			<jsp:forward page='inscription.jsp' >
 			<jsp:param name='erreur' value='ERREUR' />
 			</jsp:forward>
 		<%
 		
-		//String nextJSP = "/inscription.jsp";
-		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		//dispatcher.forward(request,response);
 	}
 	
 	String sql = new String("INSERT INTO `Utilisateur` (`Nom_ut`, `Prenom_ut`, `Adresse_ut`, `Ville_ut`, `CP_ut`, `Tel_ut`, `Ddn_ut`, `Ligue_ut`, `Email_ut`, `Mdp_ut`) VALUES ('"+nom+"', '"+prenom+"', '"+adresse+"', '"+ville+"', '"+cp+"', '"+tel+"', '"+ddn+"', '"+ligue+"', '"+email+"', '"+mdp+"')");
 	System.out.printf(rs.next()+"\n");
 	int eu = connect.executionUpdate(sql);
-
-
+	connect.closeConnection();
 %>
+<jsp:forward page='inscription.jsp' />
 <jsp:forward page='validation.jsp'/>
