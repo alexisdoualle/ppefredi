@@ -25,7 +25,7 @@
 	<div class="cellule2"><p><a href="inscription.jsp">Inscription</a></p></div>
 	<div class="cellule3"><p><a href="#">Administrateur</a></p></div>
 	<% 
-		ConnexionJdbc connect = new ConnexionJdbc("localhost:3307/frediDB","root","root");
+		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
 	 	connect.connection();
 	 	String reqSQL = new String("Insert into `Utilisateur` (`Nom_ut`, `Prenom_ut`) Values('Doualle', 'Alexis')");
 	 	String reqSQL2 = new String("Select * from `Utilisateur`");
