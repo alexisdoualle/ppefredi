@@ -11,7 +11,7 @@
 	session.setAttribute("email", email);
 	session.setAttribute("mdp", mdp);
 	
-	ConnexionJdbc connect = new ConnexionJdbc("localhost:3307/frediDB","root","root");
+	ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 	connect.connection();
 	
 	String verifierMail = new String("SELECT * FROM utilisateur WHERE email_ut = '"+email+"' AND mdp_ut ='"+mdp+"'");
@@ -25,4 +25,4 @@
 	}
 	connect.closeConnection();
 %>
-<jsp:forward page='validationConn.jsp' />
+<jsp:forward page='validationConn' />
