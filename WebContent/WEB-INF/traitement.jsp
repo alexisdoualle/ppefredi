@@ -28,7 +28,7 @@
 	session.setAttribute("mdp", mdp);
 	session.setAttribute("ligue", ligue);
 	
-	ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+	ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 	connect.connection();
 	
 	String verifierMail = new String("SELECT * FROM utilisateur WHERE email_ut = '"+email+"'");
