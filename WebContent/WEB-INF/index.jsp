@@ -28,8 +28,8 @@
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="selected"><a href="Accueil">Accueil</a></li>
-          <li><a href="InterfaceUtilisateur">Espace Membre</a></li>
-          <li><a href="InterfaceAdmin">Espace admin</a></li>
+          <li><a href="ConnexionMembre">Espace Membre</a></li>
+          <li><a href="ConnexionAdmin">Espace admin</a></li>
         </ul>
       </div>
     </div>

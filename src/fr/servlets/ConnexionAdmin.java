@@ -25,7 +25,7 @@ public class ConnexionAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/ConnexionAdmin.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionAdmin.jsp" ).forward( request, response );
 	}
 
 	/**

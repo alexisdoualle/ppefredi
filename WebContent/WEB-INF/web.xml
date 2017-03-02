@@ -44,7 +44,7 @@
     <servlet-class>fr.servlets.ConnexionAdmin</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>connexionAdmin</servlet-name>
+    <servlet-name>ConnexionAdmin</servlet-name>
     <url-pattern>/ConnexionAdmin</url-pattern>
   </servlet-mapping>
   
