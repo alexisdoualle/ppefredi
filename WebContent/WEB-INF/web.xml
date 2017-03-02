@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <description></description>
     <display-name>Index</display-name>
@@ -19,6 +20,7 @@
     <servlet-name>Index</servlet-name>
     <url-pattern>/Index</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>Accueil</servlet-name>
     <servlet-class>fr.servlets.Index</servlet-class>
@@ -28,21 +30,24 @@
     <url-pattern>/Accueil</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>interfaceUtil</servlet-name>
-    <servlet-class>fr.servlets.interfaceutilisateur</servlet-class>
+  
+    <servlet-name>ConnexionMembre</servlet-name>
+    <servlet-class>fr.servlets.ConnexionMembre</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>interfaceUtil</servlet-name>
-    <url-pattern>/InterfaceUtilisateur</url-pattern>
+    <servlet-name>ConnexionMembre</servlet-name>
+    <url-pattern>/ConnexionMembre</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>interfaceAdmin</servlet-name>
-    <servlet-class>fr.servlets.interfaceadmin</servlet-class>
+    <servlet-name>ConnexionAdmin</servlet-name>
+    <servlet-class>fr.servlets.ConnexionAdmin</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>interfaceAdmin</servlet-name>
-    <url-pattern>/InterfaceAdmin</url-pattern>
+    <servlet-name>connexionAdmin</servlet-name>
+    <url-pattern>/ConnexionAdmin</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>inscription</display-name>
@@ -62,5 +67,25 @@
   <servlet-mapping>
     <servlet-name>traitementinscription</servlet-name>
     <url-pattern>/traitement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EspaceAdmin</display-name>
+    <servlet-name>EspaceAdmin</servlet-name>
+    <servlet-class>fr.servlets.EspaceAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EspaceAdmin</servlet-name>
+    <url-pattern>/EspaceAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EspaceMembre</display-name>
+    <servlet-name>EspaceMembre</servlet-name>
+    <servlet-class>fr.servlets.EspaceMembre</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EspaceMembre</servlet-name>
+    <url-pattern>/EspaceMembre</url-pattern>
   </servlet-mapping>
 </web-app>
