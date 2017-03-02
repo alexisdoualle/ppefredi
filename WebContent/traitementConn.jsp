@@ -11,12 +11,13 @@
 	session.setAttribute("email", email);
 	session.setAttribute("mdp", mdp);
 	
-	ConnexionJdbc connect = new ConnexionJdbc("localhost:3307/frediDB","root","root");
+	ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
 	connect.connection();
 	
 	String verifierMail = new String("SELECT * FROM utilisateur WHERE email_ut = '"+email+"' AND mdp_ut ='"+mdp+"'");
 	ResultSet rs = connect.executionRequete(verifierMail);
 	if(!rs.next()){
+		log("on est dans !rs.next");
 		%>
 		<jsp:forward page='connexion.jsp' >
 		<jsp:param name='erreur' value='ERREUR' />
