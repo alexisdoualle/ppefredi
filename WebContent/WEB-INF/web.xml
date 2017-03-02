@@ -19,4 +19,48 @@
     <servlet-name>Index</servlet-name>
     <url-pattern>/Index</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Accueil</servlet-name>
+    <servlet-class>fr.servlets.Index</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Accueil</servlet-name>
+    <url-pattern>/Accueil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>interfaceUtil</servlet-name>
+    <servlet-class>fr.servlets.interfaceutilisateur</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>interfaceUtil</servlet-name>
+    <url-pattern>/InterfaceUtilisateur</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>interfaceAdmin</servlet-name>
+    <servlet-class>fr.servlets.interfaceadmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>interfaceAdmin</servlet-name>
+    <url-pattern>/InterfaceAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>inscription</display-name>
+    <servlet-name>inscription</servlet-name>
+    <servlet-class>fr.servlets.inscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>inscription</servlet-name>
+    <url-pattern>/inscription</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>traitementinscription</display-name>
+    <servlet-name>traitementinscription</servlet-name>
+    <servlet-class>fr.servlets.traitementinscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>traitementinscription</servlet-name>
+    <url-pattern>/traitement</url-pattern>
+  </servlet-mapping>
 </web-app>
