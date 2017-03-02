@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class interfaceadmin
+ * Servlet implementation class interfaceutilisateur
  */
-public class interfaceadmin extends HttpServlet {
+public class ConnexionMembre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public interfaceadmin() {
+    public ConnexionMembre() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,7 +25,7 @@ public class interfaceadmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/admin.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/ConnexionMembre.jsp" ).forward( request, response );
 	}
 
 	/**
