@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -42,11 +43,11 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Fonctionalités disponnibles</h3>
+            <h3>FonctionalitÃ©s disponnibles</h3>
             <h5>Copyright 2016</h5>
             <p>A travers La maison des ligues vous pouvez :
-			<li>Vous connecter a votre éspace membre</li>
-			<li>Compléter et ajouter des cours au format texte dans la base de donnée du site</li>
+			<li>Vous connecter a votre Ã©space membre</li>
+			<li>ComplÃ©ter et ajouter des cours au format texte dans la base de donnÃ©e du site</li>
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -57,7 +58,7 @@
             <h3>Bulle d'aide</h3>
             <form method="post" action="#" id="search_form">
               <p>
-                <input class="search" type="text" name="search_field" value="Mots Clés" />
+                <input class="search" type="text" name="search_field" value="Mots ClÃ©s" />
                 <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
               </p>
             </form>
@@ -67,7 +68,7 @@
       </div>
       <form method="post" action="traitementConn.jsp">
 	<fieldset>
-		<center><legend>Connexion a votre interface adhérent</legend>
+		<center><legend>Connexion a votre interface adhÃ©rent</legend>
 		<br>
 		
 		<label>Email: <br></label>

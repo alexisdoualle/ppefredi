@@ -11,23 +11,13 @@
   </welcome-file-list>
   
   <servlet>
-    <description></description>
-    <display-name>Index</display-name>
-    <servlet-name>Index</servlet-name>
-    <servlet-class>fr.servlets.Index</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Index</servlet-name>
-    <url-pattern>/Index</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
     <servlet-name>Accueil</servlet-name>
     <servlet-class>fr.servlets.Index</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Accueil</servlet-name>
-    <url-pattern>/Accueil</url-pattern>
+    <url-pattern>/</url-pattern>
+    <url-pattern>/index</url-pattern>
   </servlet-mapping>
   <servlet>
   

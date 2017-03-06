@@ -12,7 +12,8 @@
 	session.setAttribute("mdp", mdp);
 	
 
-	ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
+	ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+	//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 
 	connect.connection();
 	
