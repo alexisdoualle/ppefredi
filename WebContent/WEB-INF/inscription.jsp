@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -42,11 +43,11 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>FonctionalitÈs disponnibles</h3>
+            <h3>Fonctionalit√©s disponnibles</h3>
             <h5>Copyright 2016</h5>
             <p>A travers La maison des ligues vous pouvez :
-			<li>Vous connecter a votre Èspace membre</li>
-			<li>ComplÈter et ajouter des cours au format texte dans la base de donnÈe du site</li>
+			<li>Vous connecter a votre √©space membre</li>
+			<li>Compl√©ter et ajouter des cours au format texte dans la base de donn√©e du site</li>
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -57,7 +58,7 @@
             <h3>Bulle d'aide</h3>
             <form method="post" action="#" id="search_form">
               <p>
-                <input class="search" type="text" name="search_field" value="Mots ClÈs" />
+                <input class="search" type="text" name="search_field" value="Mots Cl√©s" />
                 <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
               </p>
             </form>
@@ -81,53 +82,53 @@ if (ville==null) ville="";
 %>
 
 <div>
-   <form method="post" action="traitement">
+   <form method="post" action="inscription">
    <fieldset><center>
      <legend>Inscription</legend>
      <br>
        <label for="nom">Nom :   <br><span class="requis"></span></label>
-       <input type="text" name="nom" placeholder="ex: Dupont"/><br />
+       <input type="text" name="nom" value="Dupont"/><br />
 
-       <label for="prenom">PrÈnom :   <br><span class="requis"></span></label>
-       <input type="text" name="prenom" placeholder="ex: Jean"/><br />
+       <label for="prenom">Pr√©nom :   <br><span class="requis"></span></label>
+       <input type="text" name="prenom" value="Jean"/><br />
        
        <label for="adresse">Adresse :   <br><span class="requis"></span></label>
-       <input type="text" name="adresse" placeholder="ex: 1 rue Machin"/><br />
+       <input type="text" name="adresse" value="1 rue Machin"/><br />
        
        <label for="ville">Ville :   <br><span class="requis"></span></label>
-       <input type="text" name="ville" placeholder="ex: Lyon" /><br />
+       <input type="text" name="ville" value="Lyon" /><br />
        
        <label for="cp">CP :   <br><span class="requis"></span></label>
-       <input type="text" name="cp" placeholder="ex: 23076" /><br />
+       <input type="text" name="cp" value="23076" /><br />
       
-       <label for="tel">TÈlÈphone :   <br><span class="requis"></span></label>
-       <input type="text" name="tel" placeholder="ex: 0123456789" /><br />
+       <label for="tel">T√©l√©phone :   <br><span class="requis"></span></label>
+       <input type="text" name="tel" value="0123456789" /><br />
+       
+       <label for="ddn">Date de naissance :   <br><span class="requis"></span></label>
+       <input type="text" name="ddn" size="20" maxlength="20" value="1999-01-01" /><br />
        
 		<% 
 			try {
 		      	if(request.getParameter("erreur").length()>0) {
-		      		out.println("<strong>Cette adresse mail est dÈj‡ utilisÈe.</strong><br>");
+		      		out.println("<strong>Cette adresse mail est d√©j√† utilis√©e.</strong><br>");
 		      	}
 			}
 		catch(NullPointerException e){}
 	
  		 %>
        <label for="email">Email :   <br><span class="requis"></span></label>
-       <input type="text" name="email" placeholder="ex: jdupont@gmail.com" /><br />
-       
-       <label for="ddn">Date de naissance :   <br><span class="requis"></span></label>
-       <input type="text" name="ddn" size="20" maxlength="20" placeholder="YYYY-MM-DD" /><br />
+       <input type="text" name="email" value="jdupont@gmail.com" /><br />
+	   <span class="erreur" style="color:red">${erreurs['email']}</span>
+	   <br>
        
        <label for="mdp">Mot de passe :   <br><span class="requis"></span></label>
        <input type="password" name="mdp" placeholder="********" /><br />
        
-       <label for="ligue">Ligue :   <br><span class="requis"></span></label>
-       <input type="text" name="ligue" placeholder="ex: Foot" /><br />
-       <br>
 
        <input type="submit" value="Valider l'inscription" class="sansLabel" />
        </center>
        <br />
+       <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
     </fieldset>
   </form>
       

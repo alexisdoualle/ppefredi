@@ -93,7 +93,7 @@
 	</fieldset>
 </form>
 		</center>
-<p><center> Vous n'avez pas de compte ? Merci de bien vouloir cliquer <a href="inscription">ICI</a></center>.
+<p><center> Vous n'avez pas de compte ? Merci de bien vouloir cliquer <a href="inscription">ICI</a></center>
 
 </div>
 

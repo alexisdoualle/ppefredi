@@ -104,7 +104,7 @@ public class ConnexionJdbc {
 	
 	} // fin de executionRequete(String sql)
 	
-	public int executionUpdate(String sql) {
+	public int executionUpdate(String sql) throws SQLException {
 		try {
 			int eu = this.dbStatement.executeUpdate(sql);
 			return eu;
