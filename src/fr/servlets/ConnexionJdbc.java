@@ -26,15 +26,20 @@ import java.util.logging.Logger;
 public class ConnexionJdbc {
 	
 	// parametres connexion à la BD de Mysql
-	private String login = "";
-	private String mdp = "";
-	private String dburl = "";
+	private String login = "root";
+	private String mdp = "root";
+	private String dburl = "localhost:8889/FrediDB";
 	
 	// L'objet dbConnect de la classe Connection permet de se connecter à la DB
 	private java.sql.Connection dbConnect = null;
 	// L'objet Statement permet d'exécuter des instructions SQL
 	// CREATE ;INSERT ;UPDATE ;SELECT ;DELETE.
 	private java.sql.Statement dbStatement = null;
+	
+ 	// constructeur de la classe
+	public ConnexionJdbc() {
+
+	}
 	
  	// constructeur de la classe
 	public ConnexionJdbc(String url, String user, String password) {

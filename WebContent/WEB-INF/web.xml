@@ -33,7 +33,6 @@
     <servlet-name>ConnexionAdmin</servlet-name>
     <url-pattern>/ConnexionAdmin</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>EspaceAdmin</display-name>
@@ -52,7 +51,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EspaceMembre</servlet-name>
-    <url-pattern>/EspaceMembre</url-pattern>
+    <url-pattern>/espaceMembre</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -63,5 +62,24 @@
   <servlet-mapping>
     <servlet-name>Inscription</servlet-name>
     <url-pattern>/inscription</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>RestrictionFilter</display-name>
+    <filter-name>RestrictionFilter</filter-name>
+    <filter-class>fr.filtres.RestrictionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RestrictionFilter</filter-name>
+    <url-pattern>/espace-membres/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Deconnexion</display-name>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>fr.servlets.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
 </web-app>

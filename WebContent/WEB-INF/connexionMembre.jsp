@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -82,7 +83,11 @@
 		<input type="submit" value="valider"/>
 		<br>
 		<br>
+        <c:if test="${!empty sessionScope.prenomUtilisateur}">
+          <p class="succes">Bonjour, ${sessionScope.prenomUtilisateur} !</p>
+         </c:if>
 	</fieldset>
+	
 </form>
 		</center>
 <p><center> Vous n'avez pas de compte ? Merci de bien vouloir cliquer <a href="inscription">ICI</a></center>
