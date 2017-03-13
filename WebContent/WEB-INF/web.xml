@@ -51,7 +51,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EspaceMembre</servlet-name>
-    <url-pattern>/espaceMembre</url-pattern>
+    <url-pattern>/espacemembre</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

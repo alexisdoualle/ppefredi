@@ -37,7 +37,17 @@ public class ConnexionMembre extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
+		HttpSession session = request.getSession();
+		String pren = (String) session.getAttribute("prenomUtilisateur");
+		System.out.println(pren);
+		if (pren == null) {
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
+			System.out.println("session est null");
+		} else {
+			this.getServletContext().getRequestDispatcher( "/espace-membres/index.jsp" ).forward( request, response );	
+			System.out.println("session est non null");
+		} 
+		
 	}
 
 	/**
@@ -64,16 +74,18 @@ public class ConnexionMembre extends HttpServlet {
 		ResultSet rs = connect.executionRequete(verifierMail);
 		try {
 			if(rs.next()){
-				System.out.println("Mot de passe correct");
+				System.out.println("On est dans rs.next()");
 				String getPrenom = new String("SELECT prenom_util FROM utilisateurs WHERE email_util = '"+email+"'");
 				ResultSet rs2 = connect.executionRequete(getPrenom);
 				rs2.next();
 				String prenomUtilisateur = rs2.getString("prenom_util");
 				HttpSession session = request.getSession();
 				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur);
+				this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
 			} else {
 				System.out.println("Mauvaise combinaison email/mot de passe");
 				erreurs.put(email, "Mauvaise combinaison email/mot de passe");
+		        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -95,7 +107,7 @@ public class ConnexionMembre extends HttpServlet {
         connect.closeConnection();
 
         /* Transmission de la paire d'objets request/response à notre JSP */
-        this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
+
 		
 		
 	}

@@ -25,8 +25,8 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index">Accueil</a></li>
-          <li><a href="ConnexionMembre">Espace Membre</a></li>
+          <li><a href="index">Accueil</a></li>
+          <li class="selected"><a href="espacemembre">Espace Membre</a></li>
           <li><a href="ConnexionAdmin">Espace admin</a></li>
         </ul>
       </div>

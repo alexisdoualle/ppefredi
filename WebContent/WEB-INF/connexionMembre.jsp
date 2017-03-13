@@ -85,6 +85,7 @@
 		<br>
         <c:if test="${!empty sessionScope.prenomUtilisateur}">
           <p class="succes">Bonjour, ${sessionScope.prenomUtilisateur} !</p>
+		<p>Se <a href="deconnexion">déconnecter</a></p>
          </c:if>
 	</fieldset>
 	
