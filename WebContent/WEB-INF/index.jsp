@@ -18,14 +18,14 @@
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.php"><span class="logo_colour">Maison des</span><span class="logo_colour2">Ligues</span></a></h1>
+          <h1><a href="index"><span class="logo_colour">Maison des</span><span class="logo_colour2">Ligues</span></a></h1>
           <h2> </h2>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="Accueil">Accueil</a></li>
+          <li class="selected"><a href="index">Accueil</a></li>
           <li><a href="ConnexionMembre">Espace Membre</a></li>
           <li><a href="ConnexionAdmin">Espace admin</a></li>
         </ul>
