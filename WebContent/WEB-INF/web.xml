@@ -82,4 +82,14 @@
     <servlet-name>Deconnexion</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Frais</display-name>
+    <servlet-name>Frais</servlet-name>
+    <servlet-class>fr.servlets.Frais</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Frais</servlet-name>
+    <url-pattern>/frais</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -25,8 +25,8 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="#">Espace Perso</a></li>
-          <li><a href="frais">Frais</a></li>
+          <li><a href="espacemembre">Espace Perso</a></li>
+          <li class="selected"><a href="frais">Frais</a></li>
           <li><a href="#">Informations</a></li>
         </ul>
       </div>
@@ -40,9 +40,11 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
-            <h5>Espace personnel</h5>
-            <p>Se <a href="deconnexion">déconnecter</a></p>
+            <h3>Fonctionalités disponnibles</h3>
+            <h5>Copyright 2016</h5>
+            <p>A travers La maison des ligues vous pouvez :
+			<li>Vous connecter a votre espace membre</li>
+			<li>Compléter et ajouter des cours au format texte dans la base de donnée du site</li>
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -63,10 +65,13 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Espace Personnel</h1>
-        	<p>Bienvenue ${sessionScope.prenomUtilisateur}, 
-	        	vous êtes bien connecté.</p>
-	        <p>Se <a href="deconnexion">déconnecter</a></p>
+        <h1>Frais</h1>
+        	<p>Vous pouvez ici gérer vos frais de déplacements</p>
+        	<p>
+	        	<a href="">Ajouter un frais</a>
+        	</p>
+        	
+	        <p>Utilisateur: ${sessionScope.prenomUtilisateur}. Se <a href="deconnexion">déconnecter</a></p>
 	</div>
 </div>
 

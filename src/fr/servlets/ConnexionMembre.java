@@ -75,12 +75,13 @@ public class ConnexionMembre extends HttpServlet {
 		try {
 			if(rs.next()){
 				System.out.println("On est dans rs.next()");
-				String getPrenom = new String("SELECT prenom_util FROM utilisateurs WHERE email_util = '"+email+"'");
+				String getPrenom = new String("SELECT prenom_util, nom_util FROM utilisateurs WHERE email_util = '"+email+"'");
 				ResultSet rs2 = connect.executionRequete(getPrenom);
 				rs2.next();
 				String prenomUtilisateur = rs2.getString("prenom_util");
+				String nomUtilisateur = rs2.getString("nom_util");
 				HttpSession session = request.getSession();
-				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur);
+				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur + " " + nomUtilisateur);
 				this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
 			} else {
 				System.out.println("Mauvaise combinaison email/mot de passe");
