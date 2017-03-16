@@ -1,4 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ page import="fr.beans.*" %>
+<%@ page import="java.util.ArrayList;
+import java.util.List;" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -12,7 +15,7 @@
 
 <body>
   <div id="main">
-  
+
   <div id="header">
 
       <div id="logo">
@@ -31,8 +34,8 @@
         </ul>
       </div>
     </div>
-  </div> 
-  
+  </div>
+
     <div id="content_header"></div>
     <div id="site_content">
 		<div id="sidebar_container">
@@ -40,11 +43,9 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Fonctionalités disponnibles</h3>
-            <h5>Copyright 2016</h5>
-            <p>A travers La maison des ligues vous pouvez :
-			<li>Vous connecter a votre espace membre</li>
-			<li>Compléter et ajouter des cours au format texte dans la base de donnée du site</li>
+            <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
+            <h5>Espace personnel</h5>
+            <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -65,12 +66,60 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Frais</h1>
+        <h2>Frais</h2>
         	<p>Vous pouvez ici gérer vos frais de déplacements</p>
-        	<p>
-	        	<a href="">Ajouter un frais</a>
-        	</p>
-        	
+
+			<table>
+			<tr>
+
+			<th>date</th>
+			<th>motif</th>
+			<th>trajet</th>
+			<th>kms</th>
+			<th>coup</th>
+			<th>peage</th>
+			<th>repas</th>
+			<th>hotel</th>
+			</tr>
+        	<%
+			  List<FraisUnique> liste = (List<FraisUnique>) request.getAttribute("listeFrais");
+			    for(FraisUnique frais: liste){
+			       out.println(
+			    		   "</td><td> " + frais.getDate() +
+			    		   "</td><td> " + frais.getMotif() +
+			    		   "</td><td> " + frais.getTrajet() +
+			    		   "</td><td> " + frais.getKms() +
+			    		   "</td><td> " + frais.getCout() + "€" +
+			    		   "</td><td> " + frais.getPeage() + "€" +
+			    		   "</td><td> " + frais.getRepas() + "€" +
+			    		   "</td><td> " + frais.getHebergement() + "€" +
+			    		   "</td></tr>");
+			     }
+			%>
+			</table>
+
+			<h2>Ajouter un nouveau frais</h2>
+            <form method="post">
+              <label for="">Date:</label> <br>
+            	<input type="date" value="2017-01-10"> <br>
+              <label for="">Motif</label> <br>
+              <input type="text" placeholder="Déplacement"> <br>
+              <label for="">Trajet</label> <br>
+              <input type="text" name="trajet" placeholder="Paris-Grenoble"> <br>
+              <label for="">Kilométrage</label> <br>
+              <input type="number" name="kilometrage" placeholder="0"> <br>
+              <label for="">Coup</label> <br>
+              <input type="number" name="coup" placeholder="0"> <br>
+              <label for="">Péages</label> <br>
+              <input type="number" name="peage" placeholder="0"> <br>
+              <label for="">Repas</label> <br>
+              <input type="number" name="repas" placeholder="0"> <br>
+              <label for="">Hébergement</label> <br>
+              <input type="number" name="hebergement" placeholder="0"> <br>
+
+              <input type="submit" name="creerBordereau" value="Valider">
+            </form>
+
 	        <p>Utilisateur: ${sessionScope.prenomUtilisateur}. Se <a href="deconnexion">déconnecter</a></p>
 	</div>
 </div>
@@ -80,7 +129,7 @@
       <p><a href="">page de CONTACT</a></p>
       <p>Maison des ligues</p>
     </div>
-	
+
 
   </div>
 </body>
