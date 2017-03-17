@@ -78,17 +78,34 @@ public class Frais extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		String nom=request.getParameter("nom");
-		String prenom=request.getParameter("prenom");
-		String adresse=request.getParameter("adresse");
-		String ville=request.getParameter("ville");
-		String cp=request.getParameter("cp");
-		String tel=request.getParameter("tel");
-		String email=request.getParameter("email");
-		String ddn=request.getParameter("ddn");
-		String mdp=request.getParameter("mdp");
 		
+		String newDate=request.getParameter("newDate");
+		String newMotif=request.getParameter("newMotif");
+		String newTrajet=request.getParameter("newTrajet");
+		String newKilometrage=request.getParameter("newKilometrage");
+		String newCoup=request.getParameter("newCoup");
+		String newPeage=request.getParameter("newPeage");
+		String newRepas=request.getParameter("newRepas");
+		String newHebergement=request.getParameter("newHebergement");
+
+		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
+		try {
+			connect.connection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String sql = new String("INSERT INTO `frais`(`date_frais`, `motif_frais`, `trajet_frais`, `kms_frais`, `cout_frais`, `peage_frais`, `repas_frais`, `hebergement_frais`,`id_util`) "
+				   						  + "VALUES ('"+newDate+"', '"+newMotif+"', '"+newTrajet+"', '"+newKilometrage+"', '"+newCoup+"', '"+newPeage+"', '"+newRepas+"', '"+newHebergement+ "',1"+ ")");
+		try {
+			int eu = connect.executionUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		doGet(request, response);
 		
 	}
 }

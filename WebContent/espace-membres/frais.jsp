@@ -95,27 +95,48 @@ import java.util.List;" %>
 			    		   "</td><td> " + frais.getHebergement() + "€" +
 			    		   "</td></tr>");
 			     }
+
 			%>
 			</table>
+
+			<h2>Supprimer un frais</h2>
+			<form>
+        <select name="select">
+          <%
+            for(FraisUnique frais: liste){
+                 out.println( "<option>" + frais.getTrajet() +",  "+ frais.getDate() +" </option>");
+               }
+          %>
+        </select>
+        <input type="submit" value="supprimer">
+			</form>
+
+			<c:forEach items="${listeFrais}" var="lf">
+				<br>SALUT
+			</c:forEach>
+
+
+
+			<p>salut ${listeFrais[1].date }</p>
 
 			<h2>Ajouter un nouveau frais</h2>
             <form method="post">
               <label for="">Date:</label> <br>
-            	<input type="date" value="2017-01-10"> <br>
+              <input type="date" name="newDate" value="2017-03-10"> <br>
               <label for="">Motif</label> <br>
-              <input type="text" placeholder="Déplacement"> <br>
+              <input type="text" name="newMotif" value="Deplacement"> <br>
               <label for="">Trajet</label> <br>
-              <input type="text" name="trajet" placeholder="Paris-Grenoble"> <br>
+              <input type="text" name="newTrajet" value="Paris-Grenoble"> <br>
               <label for="">Kilométrage</label> <br>
-              <input type="number" name="kilometrage" placeholder="0"> <br>
+              <input type="number" name="newKilometrage" value="0"> <br>
               <label for="">Coup</label> <br>
-              <input type="number" name="coup" placeholder="0"> <br>
+              <input type="number" name="newCoup" value="0"> <br>
               <label for="">Péages</label> <br>
-              <input type="number" name="peage" placeholder="0"> <br>
+              <input type="number" name="newPeage" value="0"> <br>
               <label for="">Repas</label> <br>
-              <input type="number" name="repas" placeholder="0"> <br>
+              <input type="number" name="newRepas" value="0"> <br>
               <label for="">Hébergement</label> <br>
-              <input type="number" name="hebergement" placeholder="0"> <br>
+              <input type="number" name="newHebergement" value="0"> <br>
 
               <input type="submit" name="creerBordereau" value="Valider">
             </form>
