@@ -23,6 +23,7 @@ public class ConnexionMembre extends HttpServlet {
     public static final String ATT_ERREURS  = "erreurs";
     public static final String ATT_RESULTAT = "resultat";
     public static final String ATT_SESSION_USER = "prenomUtilisateur";
+    public static final String ATT_SESSION_IDUSER = "idUtilisateur";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -71,13 +72,17 @@ public class ConnexionMembre extends HttpServlet {
 		ResultSet rs = connect.executionRequete(verifierMail);
 		try {
 			if(rs.next()){
-				String getPrenom = new String("SELECT prenom_util, nom_util FROM utilisateurs WHERE email_util = '"+email+"'");
+				//sélectionne l'id et le nom et prénom de l'utilisateur à partir de l'adresse mail entrée (qui est unique)
+				String getPrenom = new String("SELECT id_util, prenom_util, nom_util FROM utilisateurs WHERE email_util = '"+email+"'");
 				ResultSet rs2 = connect.executionRequete(getPrenom);
 				rs2.next();
+				String idUtilisateur = rs2.getString("id_util");
 				String prenomUtilisateur = rs2.getString("prenom_util");
 				String nomUtilisateur = rs2.getString("nom_util");
 				HttpSession session = request.getSession();
 				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur + " " + nomUtilisateur);
+				session.setAttribute(ATT_SESSION_IDUSER, idUtilisateur);
+
 				this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
 			} else {
 				System.out.println("Mauvaise combinaison email/mot de passe");

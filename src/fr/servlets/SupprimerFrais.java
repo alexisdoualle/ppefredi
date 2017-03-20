@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.beans.FraisUnique;
 
@@ -27,7 +28,7 @@ public class SupprimerFrais extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public List<FraisUnique> getFrais() {
+    public List<FraisUnique> getFrais(String idUtil) {
 		ConnexionJdbc connect = new ConnexionJdbc();
 		try {
 			connect.connection();
@@ -35,10 +36,10 @@ public class SupprimerFrais extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    String Query = "select * from ABC";
+		
 	    List<FraisUnique> list=new ArrayList();
-		String frais = new String("SELECT * FROM frais");
-		ResultSet rs = connect.executionRequete(frais);
+		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil);
+		ResultSet rs = connect.executionRequete(fraisSQL);
 	      try {
 			while (rs.next()) {
 			     FraisUnique fraisU =new FraisUnique();
@@ -66,7 +67,10 @@ public class SupprimerFrais extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<FraisUnique> list = getFrais();
+	    HttpSession session = request.getSession();
+	    String idUtil = (String) session.getAttribute("idUtilisateur");
+	    
+		List<FraisUnique> list = getFrais(idUtil);
 		request.setAttribute("listeFrais", list);
 		request.setAttribute("selectedId", "");
 		this.getServletContext().getRequestDispatcher( "/espace-membres/supprimerfrais.jsp" ).forward( request, response );
@@ -77,6 +81,7 @@ public class SupprimerFrais extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		String fraisASupprimer=request.getParameter("listeSuppr");
 
 		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");

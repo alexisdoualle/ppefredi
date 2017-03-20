@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Frais
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Frais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final int max = 5;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,7 +30,7 @@ public class Frais extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-	public List<FraisUnique> getFrais() {
+	public List<FraisUnique> getFrais(String idUtil) {
 		ConnexionJdbc connect = new ConnexionJdbc();
 		try {
 			connect.connection();
@@ -36,10 +38,9 @@ public class Frais extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    String Query = "select * from ABC";
 	    List<FraisUnique> list=new ArrayList();
-		String frais = new String("SELECT * FROM frais");
-		ResultSet rs = connect.executionRequete(frais);
+		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil);
+		ResultSet rs = connect.executionRequete(fraisSQL);
 	      try {
 			while (rs.next()) {
 			     FraisUnique fraisU =new FraisUnique();
@@ -67,7 +68,10 @@ public class Frais extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<FraisUnique> list = getFrais();
+	    /* Récupération de la session depuis la requête */
+	    HttpSession session = request.getSession();
+	    String idUtil = (String) session.getAttribute("idUtilisateur");
+		List<FraisUnique> list = getFrais(idUtil);
 		request.setAttribute("listeFrais", list);
 		request.setAttribute("selectedId", "");
 		this.getServletContext().getRequestDispatcher( "/espace-membres/frais.jsp" ).forward( request, response );
@@ -78,6 +82,9 @@ public class Frais extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+	    HttpSession session = request.getSession();
+	    String idUtil = (String) session.getAttribute("idUtilisateur");
 		
 		String newDate=request.getParameter("newDate");
 		String newMotif=request.getParameter("newMotif");
@@ -97,7 +104,7 @@ public class Frais extends HttpServlet {
 			e.printStackTrace();
 		}
 		String sql = new String("INSERT INTO `frais`(`date_frais`, `motif_frais`, `trajet_frais`, `kms_frais`, `cout_frais`, `peage_frais`, `repas_frais`, `hebergement_frais`,`id_util`) "
-				   						  + "VALUES ('"+newDate+"', '"+newMotif+"', '"+newTrajet+"', '"+newKilometrage+"', '"+newCoup+"', '"+newPeage+"', '"+newRepas+"', '"+newHebergement+ "',1"+ ")");
+				   						  + "VALUES ('"+newDate+"', '"+newMotif+"', '"+newTrajet+"', '"+newKilometrage+"', '"+newCoup+"', '"+newPeage+"', '"+newRepas+"', '"+newHebergement+ "',"+ idUtil +")");
 		try {
 			int eu = connect.executionUpdate(sql);
 		} catch (SQLException e) {
