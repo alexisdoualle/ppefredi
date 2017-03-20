@@ -82,7 +82,7 @@ public class ConnexionMembre extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur + " " + nomUtilisateur);
 				session.setAttribute(ATT_SESSION_IDUSER, idUtilisateur);
-
+				session.setMaxInactiveInterval(10);
 				this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
 			} else {
 				System.out.println("Mauvaise combinaison email/mot de passe");

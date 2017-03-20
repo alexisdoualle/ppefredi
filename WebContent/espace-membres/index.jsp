@@ -18,7 +18,7 @@
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index"><span class="logo_colour">Maison des</span><span class="logo_colour2">Ligues</span></a></h1>
+          <h1><a href="index.html"><span class="logo_colour">Maison des</span><span class="logo_colour2">Ligues</span></a></h1>
           <h2> </h2>
         </div>
       </div>
@@ -67,6 +67,9 @@
         <h1>Espace Personnel</h1>
         	<p>Bienvenue ${sessionScope.prenomUtilisateur}, 
 	        	vous êtes bien connecté.</p>
+	        <p>Vous pouvez visualiser vos frais et en ajouter sur cette <a href="#">page</a>.<br>
+	        	Pour supprimer un frais, rendez-vous sur cette <a href="#">page</a>.
+	        </p>
 	        <p>Se <a href="deconnexion">déconnecter</a></p>
 	</div>
 </div>

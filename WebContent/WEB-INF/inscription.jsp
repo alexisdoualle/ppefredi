@@ -20,7 +20,7 @@
                     <div id="logo_text">
                         <!-- class="logo_colour", allows you to change the colour of the text -->
                         <h1>
-                            <a href="index.php">
+                            <a href="index.html">
                                 <span class="logo_colour">Maison des</span>
                                 <span class="logo_colour2">Ligues</span>
                             </a>

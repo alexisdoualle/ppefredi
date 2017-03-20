@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class RestrictionFilter implements Filter {
-    public static final String ACCES_PUBLIC     = "/index";
+    public static final String ACCES_PUBLIC     = "/index.html";
     public static final String ATT_SESSION_USER = "prenomUtilisateur";
 
     public void init( FilterConfig config ) throws ServletException {
@@ -21,9 +21,16 @@ public class RestrictionFilter implements Filter {
 
     public void doFilter( ServletRequest req, ServletResponse res, FilterChain chain ) throws IOException,
             ServletException {
+  
         /* Cast des objets request et response */
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+        
+        String chemin = request.getRequestURI().substring( request.getContextPath().length() );
+        if ( chemin.startsWith( "/Conn" ) || chemin.startsWith( "/insc" ) ) {
+            chain.doFilter( request, response );
+            return;
+        }
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
@@ -34,7 +41,7 @@ public class RestrictionFilter implements Filter {
          */
         if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
             /* Redirection vers la page publique */
-            response.sendRedirect( request.getContextPath() + ACCES_PUBLIC );
+        	request.getRequestDispatcher( ACCES_PUBLIC ).forward( request, response );
         } else {
             /* Affichage de la page restreinte */
             chain.doFilter( request, response );
