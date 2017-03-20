@@ -39,13 +39,10 @@ public class ConnexionMembre extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String pren = (String) session.getAttribute("prenomUtilisateur");
-		System.out.println(pren);
 		if (pren == null) {
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
-			System.out.println("session est null");
 		} else {
 			this.getServletContext().getRequestDispatcher( "/espace-membres/index.jsp" ).forward( request, response );	
-			System.out.println("session est non null");
 		} 
 		
 	}
@@ -74,7 +71,6 @@ public class ConnexionMembre extends HttpServlet {
 		ResultSet rs = connect.executionRequete(verifierMail);
 		try {
 			if(rs.next()){
-				System.out.println("On est dans rs.next()");
 				String getPrenom = new String("SELECT prenom_util, nom_util FROM utilisateurs WHERE email_util = '"+email+"'");
 				ResultSet rs2 = connect.executionRequete(getPrenom);
 				rs2.next();

@@ -31,8 +31,8 @@ import java.util.List;" %>
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="espacemembre">Espace Perso</a></li>
-          <li class="selected"><a href="frais">Frais</a></li>
-          <li><a href="supprimerfrais">Supprimer frais</a></li>
+          <li><a href="frais">Frais</a></li>
+          <li class="selected"><a href="#">Supprimer frais</a></li>
         </ul>
       </div>
     </div>
@@ -46,6 +46,7 @@ import java.util.List;" %>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
+            <p>Pour supprimer un frais, sélectionnez le dans la liste déroulante, puis cliquez sur "Supprimer"</p>
             <h5>Espace personnel</h5>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
@@ -67,8 +68,18 @@ import java.util.List;" %>
         </div>
       </div>
       <div id="content">
-        <!-- insert the page content here -->
-        <h2>Tableau des frais</h2>
+        	<h2>Supprimer un frais</h2>
+
+
+			<% String selectedId = (String) request.getAttribute("selectedId"); %>
+			<form name="suppr" method="post" action="#">
+				<select name="listeSuppr">
+				    <c:forEach var="item" items="${listeFrais}">
+				        <option value="${item.id}" ${item.id == selectedId ? 'selected="selected"' : ''}>${item.trajet}, ${item.date} </option>
+				    </c:forEach>
+				</select>
+				<input type="submit" value="Supprimer"/>
+			</form>
 
 			<table>
 			<tr>
@@ -100,29 +111,7 @@ import java.util.List;" %>
 			%>
 			</table>
 
-
-
-			<h2>Ajouter un nouveau frais</h2>
-            <form method="post">
-              <label for="">Date:</label> <br>
-              <input type="date" name="newDate" value="2017-03-10"> <br>
-              <label for="">Motif</label> <br>
-              <input type="text" name="newMotif" value="Deplacement"> <br>
-              <label for="">Trajet</label> <br>
-              <input type="text" name="newTrajet" value="Paris-Grenoble"> <br>
-              <label for="">Kilométrage</label> <br>
-              <input type="number" name="newKilometrage" value="0"> <br>
-              <label for="">Coup</label> <br>
-              <input type="number" name="newCoup" value="0"> <br>
-              <label for="">Péages</label> <br>
-              <input type="number" name="newPeage" value="0"> <br>
-              <label for="">Repas</label> <br>
-              <input type="number" name="newRepas" value="0"> <br>
-              <label for="">Hébergement</label> <br>
-              <input type="number" name="newHebergement" value="0"> <br>
-
-              <input type="submit" name="creerBordereau" value="Valider">
-            </form>
+			
 
 	        <p>Utilisateur: ${sessionScope.prenomUtilisateur}. Se <a href="deconnexion">déconnecter</a></p>
 	</div>

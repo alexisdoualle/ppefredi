@@ -27,7 +27,7 @@
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="selected"><a href="#">Espace Perso</a></li>
           <li><a href="frais">Frais</a></li>
-          <li><a href="#">Informations</a></li>
+          <li><a href="supprimerfrais">Supprimer frais</a></li>
         </ul>
       </div>
     </div>
@@ -41,6 +41,7 @@
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
+            <p>Vous pouvez ici gérer vos frais de déplacements</p>
             <h5>Espace personnel</h5>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>

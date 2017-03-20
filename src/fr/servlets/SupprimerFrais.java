@@ -1,34 +1,33 @@
 package fr.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import fr.beans.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.beans.FraisUnique;
+
 /**
- * Servlet implementation class Frais
+ * Servlet implementation class SupprimerFrais
  */
-public class Frais extends HttpServlet {
+public class SupprimerFrais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final int max = 5;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Frais() {
+    public SupprimerFrais() {
         super();
         // TODO Auto-generated constructor stub
     }
     
-	public List<FraisUnique> getFrais() {
+    public List<FraisUnique> getFrais() {
 		ConnexionJdbc connect = new ConnexionJdbc();
 		try {
 			connect.connection();
@@ -70,23 +69,15 @@ public class Frais extends HttpServlet {
 		List<FraisUnique> list = getFrais();
 		request.setAttribute("listeFrais", list);
 		request.setAttribute("selectedId", "");
-		this.getServletContext().getRequestDispatcher( "/espace-membres/frais.jsp" ).forward( request, response );
-	}
+		this.getServletContext().getRequestDispatcher( "/espace-membres/supprimerfrais.jsp" ).forward( request, response );
+			}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String newDate=request.getParameter("newDate");
-		String newMotif=request.getParameter("newMotif");
-		String newTrajet=request.getParameter("newTrajet");
-		String newKilometrage=request.getParameter("newKilometrage");
-		String newCoup=request.getParameter("newCoup");
-		String newPeage=request.getParameter("newPeage");
-		String newRepas=request.getParameter("newRepas");
-		String newHebergement=request.getParameter("newHebergement");
+		String fraisASupprimer=request.getParameter("listeSuppr");
 
 		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
 		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
@@ -96,16 +87,17 @@ public class Frais extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String sql = new String("INSERT INTO `frais`(`date_frais`, `motif_frais`, `trajet_frais`, `kms_frais`, `cout_frais`, `peage_frais`, `repas_frais`, `hebergement_frais`,`id_util`) "
-				   						  + "VALUES ('"+newDate+"', '"+newMotif+"', '"+newTrajet+"', '"+newKilometrage+"', '"+newCoup+"', '"+newPeage+"', '"+newRepas+"', '"+newHebergement+ "',1"+ ")");
+		String sql = new String("DELETE FROM `frais` WHERE `id_frais`=" +fraisASupprimer);
+		
 		try {
 			int eu = connect.executionUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		
 		doGet(request, response);
 		
 	}
+
 }
