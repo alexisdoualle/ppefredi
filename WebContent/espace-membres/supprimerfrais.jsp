@@ -47,7 +47,7 @@ import java.util.List;" %>
             <!-- insert your sidebar items here -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
             <p>Pour supprimer un frais, sélectionnez le dans la liste déroulante, puis cliquez sur "Supprimer"</p>
-            <h5>Espace personnel</h5>
+            
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>

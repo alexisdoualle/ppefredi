@@ -42,7 +42,6 @@
             <!-- insert your sidebar items here -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
             <p>Vous pouvez ici gérer vos frais de déplacements</p>
-            <h5>Espace personnel</h5>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>
@@ -67,8 +66,8 @@
         <h1>Espace Personnel</h1>
         	<p>Bienvenue ${sessionScope.prenomUtilisateur}, 
 	        	vous êtes bien connecté.</p>
-	        <p>Vous pouvez visualiser vos frais et en ajouter sur cette <a href="#">page</a>.<br>
-	        	Pour supprimer un frais, rendez-vous sur cette <a href="#">page</a>.
+	        <p>Vous pouvez visualiser vos frais et en ajouter sur cette <a href="frais">page</a>.<br>
+	        	Pour supprimer un frais, rendez-vous sur cette <a href="supprimerfrais">page</a>.
 	        </p>
 	        <p>Se <a href="deconnexion">déconnecter</a></p>
 	</div>

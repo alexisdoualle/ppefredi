@@ -46,7 +46,7 @@ import java.util.List;" %>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
-            <h5>Espace personnel</h5>
+
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>

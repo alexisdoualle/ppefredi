@@ -27,7 +27,6 @@ public class RestrictionFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         
         String chemin = request.getRequestURI().substring( request.getContextPath().length() );
-        System.out.println(chemin);
         if ( chemin.startsWith( "/Conn" ) || chemin.startsWith( "/insc" ) || chemin.startsWith( "/sty" ) ) {
             chain.doFilter( request, response );
             return;

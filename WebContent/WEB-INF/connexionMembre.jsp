@@ -66,19 +66,7 @@
           <div class="sidebar_base"></div>
         </div>
 
-        <div class="sidebar">
-          <div class="sidebar_top"></div>
-          <div class="sidebar_item">
-            <h3>Bulle d'aide</h3>
-            <form method="post" action="#" id="search_form">
-              <p>
-                <input class="search" type="text" name="search_field" value="Mots Clés"/>
-                <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search"/>
-              </p>
-            </form>
-          </div>
-          <div class="sidebar_base"></div>
-        </div>
+
       </div>
       <form method="post" action="ConnexionMembre">
         <fieldset>
@@ -89,12 +77,12 @@
               <label>Email:
                 <br></label>
                 <input type="text" name="email"/><br/>
-                <span class="erreur">${form.erreurs['email']}</span>
-
+				
                 <label>Mot de passe:
                   <br></label>
                   <input type="password" name="mdp"/>
                   <br>
+                   <span class="erreur">${erreurs['email']}</span>
                     <br>
 
                       <input type="submit" value="valider"/>

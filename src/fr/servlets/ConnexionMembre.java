@@ -56,6 +56,7 @@ public class ConnexionMembre extends HttpServlet {
 		//doGet(request, response);
         String resultat;
         Map<String, String> erreurs = new HashMap<String, String>();
+        
 		String email=request.getParameter("email");
 		String mdp=request.getParameter("mdp");
 		
@@ -82,12 +83,21 @@ public class ConnexionMembre extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute(ATT_SESSION_USER, prenomUtilisateur + " " + nomUtilisateur);
 				session.setAttribute(ATT_SESSION_IDUSER, idUtilisateur);
-				session.setMaxInactiveInterval(10);
+				//session.setMaxInactiveInterval(10);
 				this.getServletContext().getRequestDispatcher( ESPACE_MEMBRES ).forward( request, response );
 			} else {
 				System.out.println("Mauvaise combinaison email/mot de passe");
-				erreurs.put(email, "Mauvaise combinaison email/mot de passe");
-		        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+				erreurs.put("email", "Mauvaise combinaison email/mot de passe");
+		        if ( erreurs.isEmpty() ) {
+		            resultat = "Succès de la connexion.";
+		        } else {
+		            resultat = "Échec de la connexion.";
+		        }
+		        request.setAttribute( ATT_ERREURS, erreurs );
+		        request.setAttribute( ATT_RESULTAT, resultat );
+		        
+		        System.out.println(erreurs);
+		        this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -95,22 +105,19 @@ public class ConnexionMembre extends HttpServlet {
 			erreurs.put(email, "Echec de connexion");
 		}
 		
-        /* Initialisation du résultat global de la validation. */
+        /* 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la connexion.";
         } else {
             resultat = "Échec de la connexion.";
         }
 
-        /* Stockage du résultat et des messages d'erreur dans l'objet request */
         request.setAttribute( ATT_ERREURS, erreurs );
         request.setAttribute( ATT_RESULTAT, resultat );
-        
+         */
+		
         connect.closeConnection();
 
-        /* Transmission de la paire d'objets request/response à notre JSP */
-
-		
 		
 	}
 
