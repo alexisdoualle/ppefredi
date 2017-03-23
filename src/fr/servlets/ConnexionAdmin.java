@@ -39,11 +39,11 @@ public class ConnexionAdmin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String pren = (String) session.getAttribute("prenomUtilisateur");
+		String pren = (String) session.getAttribute("prenomAdmin");
 		if (pren == null) {
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionAdmin.jsp" ).forward( request, response );
 		} else {
-			this.getServletContext().getRequestDispatcher( "/espace-membres/index.jsp" ).forward( request, response );	
+			this.getServletContext().getRequestDispatcher( "/espace-admin/index.jsp" ).forward( request, response );	
 		} 
 		
 	}
@@ -69,7 +69,7 @@ public class ConnexionAdmin extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		String verifierMail = new String("SELECT * FROM administrateurs WHERE email_util = '"+email+"' AND mdp_util = '"+mdp+"'");
+		String verifierMail = new String("SELECT * FROM administrateurs WHERE email_admin  = '"+email+"' AND mdp_admin = '"+mdp+"'");
 		ResultSet rs = connect.executionRequete(verifierMail);
 		try {
 			if(rs.next()){
@@ -95,9 +95,8 @@ public class ConnexionAdmin extends HttpServlet {
 		        }
 		        request.setAttribute( ATT_ERREURS, erreurs );
 		        request.setAttribute( ATT_RESULTAT, resultat );
-		        
-		        System.out.println(erreurs);
-		        this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionMembre.jsp" ).forward( request, response );
+
+		        this.getServletContext().getRequestDispatcher( "/WEB-INF/connexionAdmin.jsp" ).forward( request, response );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -105,20 +104,8 @@ public class ConnexionAdmin extends HttpServlet {
 			erreurs.put(email, "Echec de connexion");
 		}
 		
-        /* 
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
-        } else {
-            resultat = "Échec de la connexion.";
-        }
-
-        request.setAttribute( ATT_ERREURS, erreurs );
-        request.setAttribute( ATT_RESULTAT, resultat );
-         */
-		
         connect.closeConnection();
 
-		
 	}
 
 }

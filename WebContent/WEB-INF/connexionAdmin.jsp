@@ -90,6 +90,7 @@
                   <br></label>
                   <input type="password" name="mdp"/>
                   <br>
+                  <span class="erreur">${erreurs['email']}</span>
                     <br>
 
                       <input type="submit" value="valider"/>
