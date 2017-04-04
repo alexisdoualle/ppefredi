@@ -25,8 +25,8 @@
       <div id="menubar">
         <ul id="menu">
           <!--  -->
-          <li class="selected"><a href="#">Espace Admin</a></li>
-          <li><a href="fraisadmin">Frais</a></li>
+          <li><a href="espaceadmin">Espace Admin</a></li>
+          <li class="selected"><a href="#">Frais Admin</a></li>
           <li><a href="#"></a></li>
         </ul>
       </div>
@@ -41,7 +41,7 @@
           <div class="sidebar_item">
             <!--  -->
             <h3>Bonjour, ${sessionScope.prenomAdmin}</h3>
-            <p>Vous pouvez ici gérer vos frais de déplacements</p>
+            <p>Vous pouvez ici gérer les frais utilisateurs</p>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>
@@ -63,7 +63,7 @@
       </div>
       <div id="content">
         <!--  -->
-        <h1>Espace Admin</h1>
+        <h1>Gérer les frais</h1>
         	<p>Bienvenue ${sessionScope.prenomAdmin}, 
 	        	vous êtes bien connecté.</p>
 	        <p>Vous pouvez visualiser vos frais et en ajouter sur cette <a href="frais">page</a>.<br>

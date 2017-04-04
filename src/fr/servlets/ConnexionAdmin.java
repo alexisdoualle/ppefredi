@@ -17,13 +17,12 @@ import javax.servlet.http.HttpSession;
  */
 public class ConnexionAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String VUE = "/WEB-INF/connexionMembre.jsp";
     public static final String ESPACE_ADMIN = "/espace-admin/index.jsp";
     public static final String CHAMP_EMAIL  = "email";
     public static final String ATT_ERREURS  = "erreurs";
     public static final String ATT_RESULTAT = "resultat";
-    public static final String ATT_SESSION_USER = "prenomUtilisateur";
-    public static final String ATT_SESSION_IDUSER = "idUtilisateur";
+    public static final String ATT_SESSION_ADMIN = "prenomAdmin";
+    public static final String ATT_SESSION_IDADMIN = "idAdmin";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -61,7 +60,6 @@ public class ConnexionAdmin extends HttpServlet {
 		String mdp=request.getParameter("mdp");
 		
 		ConnexionJdbc connect = new ConnexionJdbc();
-		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 		try {
 			connect.connection();
 		} catch (SQLException e) {
@@ -81,8 +79,8 @@ public class ConnexionAdmin extends HttpServlet {
 				String prenomAdmin = rs2.getString("prenom_admin");
 				String nomAdmin = rs2.getString("nom_admin");
 				HttpSession session = request.getSession();
-				session.setAttribute(ATT_SESSION_USER, prenomAdmin + " " + nomAdmin);
-				session.setAttribute(ATT_SESSION_IDUSER, idAdmin);
+				session.setAttribute(ATT_SESSION_ADMIN, prenomAdmin + " " + nomAdmin);
+				session.setAttribute(ATT_SESSION_IDADMIN, idAdmin);
 				//session.setMaxInactiveInterval(10);
 				this.getServletContext().getRequestDispatcher( ESPACE_ADMIN ).forward( request, response );
 			} else {

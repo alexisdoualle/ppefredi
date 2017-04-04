@@ -9,9 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-	<session-config>
-	    <session-timeout>30</session-timeout>
-	</session-config>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
   <servlet>
     <servlet-name>Accueil</servlet-name>
     <servlet-class>fr.servlets.Index</servlet-class>
@@ -44,7 +44,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EspaceAdmin</servlet-name>
-    <url-pattern>/EspaceAdmin</url-pattern>
+    <url-pattern>/espaceadmin</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -96,7 +96,7 @@
     <servlet-name>SupprimerFrais</servlet-name>
     <url-pattern>/supprimerfrais</url-pattern>
   </servlet-mapping>
-   <filter>
+  <filter>
     <display-name>RestrictionFilter</display-name>
     <filter-name>RestrictionFilter</filter-name>
     <filter-class>fr.filtres.RestrictionFilter</filter-class>
@@ -105,4 +105,14 @@
     <filter-name>RestrictionFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FraisAdmin</display-name>
+    <servlet-name>FraisAdmin</servlet-name>
+    <servlet-class>fr.servlets.FraisAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FraisAdmin</servlet-name>
+    <url-pattern>/fraisadmin</url-pattern>
+  </servlet-mapping>
 </web-app>

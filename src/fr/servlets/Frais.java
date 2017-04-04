@@ -1,7 +1,6 @@
 package fr.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpSession;
  */
 public class Frais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final int max = 5;
 
        
     /**
@@ -30,6 +28,7 @@ public class Frais extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    //fonction pour obtenir les frais d'un utilisateur (idUtil) depuis la BDD
 	public List<FraisUnique> getFrais(String idUtil) {
 		ConnexionJdbc connect = new ConnexionJdbc();
 		try {
@@ -38,10 +37,13 @@ public class Frais extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    List<FraisUnique> list=new ArrayList();
+		//crée une liste de FraisUnique
+	    List<FraisUnique> list=new ArrayList<FraisUnique>();
+	    //requète SQL pour obtenir tous les frais correspondants à l'utilisateur de la session (idUtil)
 		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil);
 		ResultSet rs = connect.executionRequete(fraisSQL);
 	      try {
+	    	 //Pour chaque frais obtenu de la BDD, crée un FraisUnique avec les setters, et le rajoute à la liste
 			while (rs.next()) {
 			     FraisUnique fraisU =new FraisUnique();
 			     fraisU.setId(rs.getString("id_frais"));
@@ -70,8 +72,11 @@ public class Frais extends HttpServlet {
 		// TODO Auto-generated method stub
 	    /* Récupération de la session depuis la requête */
 	    HttpSession session = request.getSession();
+	    //obtient l'idUtil depuis la session
 	    String idUtil = (String) session.getAttribute("idUtilisateur");
+	    //crée un liste de FraisUnique en appelant la fonction getFrais()
 		List<FraisUnique> list = getFrais(idUtil);
+		
 		request.setAttribute("listeFrais", list);
 		request.setAttribute("selectedId", "");
 		this.getServletContext().getRequestDispatcher( "/espace-membres/frais.jsp" ).forward( request, response );
@@ -81,7 +86,7 @@ public class Frais extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Le doPost() crée un nouveau frais et le rajoute à la BDD
 		
 	    HttpSession session = request.getSession();
 	    String idUtil = (String) session.getAttribute("idUtilisateur");
@@ -95,7 +100,8 @@ public class Frais extends HttpServlet {
 		String newRepas=request.getParameter("newRepas");
 		String newHebergement=request.getParameter("newHebergement");
 
-		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+		ConnexionJdbc connect = new ConnexionJdbc();
+		//ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
 		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 		try {
 			connect.connection();
@@ -106,7 +112,7 @@ public class Frais extends HttpServlet {
 		String sql = new String("INSERT INTO `frais`(`date_frais`, `motif_frais`, `trajet_frais`, `kms_frais`, `cout_frais`, `peage_frais`, `repas_frais`, `hebergement_frais`,`id_util`) "
 				   						  + "VALUES ('"+newDate+"', '"+newMotif+"', '"+newTrajet+"', '"+newKilometrage+"', '"+newCoup+"', '"+newPeage+"', '"+newRepas+"', '"+newHebergement+ "',"+ idUtil +")");
 		try {
-			int eu = connect.executionUpdate(sql);
+			connect.executionUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

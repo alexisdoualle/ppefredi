@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class RestrictionFilter implements Filter {
     public static final String ACCES_PUBLIC     = "/index.html";
     public static final String ATT_SESSION_USER = "prenomUtilisateur";
+    public static final String ATT_SESSION_ADMIN = "prenomAdmin";
 
     public void init( FilterConfig config ) throws ServletException {
     }
@@ -26,6 +27,7 @@ public class RestrictionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         
+        //laisse passer l'utilisateur sur les pages des Connexion, d'inscription, ainsi que la feuille de style
         String chemin = request.getRequestURI().substring( request.getContextPath().length() );
         if ( chemin.startsWith( "/Conn" ) || chemin.startsWith( "/insc" ) || chemin.startsWith( "/sty" ) ) {
             chain.doFilter( request, response );
@@ -36,11 +38,11 @@ public class RestrictionFilter implements Filter {
         HttpSession session = request.getSession();
 
         /**
-         * Si l'objet utilisateur n'existe pas dans la session en cours, alors
-         * l'utilisateur n'est pas connecté.
+         * Si l'objet utilisateur ET administateur n'existent pas dans la session en cours, alors
+         * personne n'est connecté.
          */
-        if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
-            /* Redirection vers la page publique */
+        if ( session.getAttribute( ATT_SESSION_USER ) == null && session.getAttribute( ATT_SESSION_ADMIN ) == null ) {
+            //redirection vers accueil
         	request.getRequestDispatcher( ACCES_PUBLIC ).forward( request, response );
         } else {
             /* Affichage de la page restreinte */

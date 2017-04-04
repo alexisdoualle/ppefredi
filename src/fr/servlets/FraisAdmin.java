@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EspaceAdmin
+ * Servlet implementation class FraisAdmin
  */
-public class EspaceAdmin extends HttpServlet {
+public class FraisAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EspaceAdmin() {
+    public FraisAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,7 +25,7 @@ public class EspaceAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher( "/espace-admin/index.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/espace-admin/fraisadmin.jsp" ).forward( request, response );
 	}
 
 	/**

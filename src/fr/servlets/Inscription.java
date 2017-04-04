@@ -91,7 +91,7 @@ public class Inscription extends HttpServlet {
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
     		try {
-    			int eu = connect.executionUpdate(sql);
+    			connect.executionUpdate(sql);
     		} catch (SQLException e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();

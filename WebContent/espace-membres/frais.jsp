@@ -22,7 +22,7 @@ import java.util.List;" %>
 
       <div id="logo">
         <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <!--  -->
           <h1><a href="index.html"><span class="logo_colour">Maison des</span><span class="logo_colour2">Ligues</span></a></h1>
           <h2> </h2>
         </div>
@@ -44,9 +44,9 @@ import java.util.List;" %>
         <div class="sidebar">
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
-            <!-- insert your sidebar items here -->
+            <!--  -->
             <h3>Bonjour, ${sessionScope.prenomUtilisateur}</h3>
-
+			<p>Pour modifier un frais, il faut le supprimer et créer un nouveau frais avec les bonnes valeurs</p>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>
@@ -67,7 +67,7 @@ import java.util.List;" %>
         </div>
       </div>
       <div id="content">
-        <!-- insert the page content here -->
+        <!--  -->
         <h2>Tableau des frais</h2>
 
 			<table>

@@ -37,7 +37,7 @@ public class SupprimerFrais extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-	    List<FraisUnique> list=new ArrayList();
+	    List<FraisUnique> list=new ArrayList<FraisUnique>();
 		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil);
 		ResultSet rs = connect.executionRequete(fraisSQL);
 	      try {
@@ -80,8 +80,9 @@ public class SupprimerFrais extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// le doPost supprime un frais de la base de donnée.
 		
+		//la paramètre "listeSuppr" correspond à l'option sélectionnée par l'utilisateur dans le select
 		String fraisASupprimer=request.getParameter("listeSuppr");
 
 		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
@@ -95,7 +96,7 @@ public class SupprimerFrais extends HttpServlet {
 		String sql = new String("DELETE FROM `frais` WHERE `id_frais`=" +fraisASupprimer);
 		
 		try {
-			int eu = connect.executionUpdate(sql);
+			connect.executionUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
