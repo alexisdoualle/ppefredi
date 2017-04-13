@@ -1,4 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ page import="fr.beans.*" %>
+<%@ page import="java.util.ArrayList;
+import java.util.List;" %>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -26,7 +31,7 @@
         <ul id="menu">
           <!--  -->
           <li><a href="espaceadmin">Espace Admin</a></li>
-          <li class="selected"><a href="#">Frais Admin</a></li>
+          <li class="selected"><a href="#">Frais</a></li>
           <li><a href="#"></a></li>
         </ul>
       </div>
@@ -41,7 +46,7 @@
           <div class="sidebar_item">
             <!--  -->
             <h3>Bonjour, ${sessionScope.prenomAdmin}</h3>
-            <p>Vous pouvez ici gérer les frais utilisateurs</p>
+            <p>Vous pouvez ici gérer les frais des utilisateurs</p>
             <p>Se <a href="deconnexion">déconnecter</a></p>
           </div>
           <div class="sidebar_base"></div>
@@ -64,10 +69,19 @@
       <div id="content">
         <!--  -->
         <h1>Gérer les frais</h1>
-        	<p>Bienvenue ${sessionScope.prenomAdmin}, 
-	        	vous êtes bien connecté.</p>
-	        <p>Vous pouvez visualiser vos frais et en ajouter sur cette <a href="frais">page</a>.<br>
-	        	Pour supprimer un frais, rendez-vous sur cette <a href="supprimerfrais">page</a>.
+	        <p>Veuillez choisir un utilisateur:
+	        	
+	        <% String selectedId = (String) request.getAttribute("selectedId"); %>
+			<form name="util" method="post" action="#">
+				<select name="listeUtil">
+				    <c:forEach var="user" items="${listeUtil}">
+				        <option value="${user.id}" ${user.id == selectedId ? 'selected="selected"' : ''}>${user.prenom} ${user.nom}, ${user.email} </option>
+				    </c:forEach>
+				</select>
+				<br>
+				<input type="submit" value="Choisir"/>
+			</form>
+	     
 	        </p>
 	        <p>Se <a href="deconnexion">déconnecter</a></p>
 	</div>
