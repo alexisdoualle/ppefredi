@@ -81,7 +81,37 @@ import java.util.List;" %>
 				<br>
 				<input type="submit" value="Choisir"/>
 			</form>
-	     
+	     	<table>
+			<tr>
+
+			<th>date</th>
+			<th>motif</th>
+			<th>trajet</th>
+			<th>kms</th>
+			<th>coup</th>
+			<th>peage</th>
+			<th>repas</th>
+			<th>hotel</th>
+			</tr>
+			<c:if test="${sessionScope.idUtilSelectionne != null}">
+			    <%
+				  List<FraisUnique> liste = (List<FraisUnique>) request.getAttribute("listeFrais");
+				    for(FraisUnique frais: liste){
+				       out.println(
+				    		   "</td><td> " + frais.getDate() +
+				    		   "</td><td> " + frais.getMotif() +
+				    		   "</td><td> " + frais.getTrajet() +
+				    		   "</td><td> " + frais.getKms() +
+				    		   "</td><td> " + frais.getCout() + "€" +
+				    		   "</td><td> " + frais.getPeage() + "€" +
+				    		   "</td><td> " + frais.getRepas() + "€" +
+				    		   "</td><td> " + frais.getHebergement() + "€" +
+				    		   "</td></tr>");
+				     }
+				%>
+			</c:if>
+        	
+			</table>
 	        </p>
 	        <p>Se <a href="deconnexion">déconnecter</a></p>
 	</div>
