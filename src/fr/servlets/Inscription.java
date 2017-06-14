@@ -57,7 +57,7 @@ public class Inscription extends HttpServlet {
 		String mdp=request.getParameter("mdp");
 		
 		
-		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+		ConnexionJdbc connect = new ConnexionJdbc();
 		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 		try {
 			connect.connection();

@@ -85,7 +85,7 @@ public class SupprimerFrais extends HttpServlet {
 		//la paramètre "listeSuppr" correspond à l'option sélectionnée par l'utilisateur dans le select
 		String fraisASupprimer=request.getParameter("listeSuppr");
 
-		ConnexionJdbc connect = new ConnexionJdbc("localhost:8889/FrediDB","root","root");
+		ConnexionJdbc connect = new ConnexionJdbc();
 		//ConnexionJdbc connect = new ConnexionJdbc("localhost/fredi","root","");
 		try {
 			connect.connection();

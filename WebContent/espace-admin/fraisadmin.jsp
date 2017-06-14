@@ -71,11 +71,11 @@ import java.util.List;" %>
         <h1>Gérer les frais</h1>
 	        <p>Veuillez choisir un utilisateur:
 	        	
-	        <% String selectedId = (String) request.getAttribute("selectedId"); %>
+	        <% String selectedId = (String) request.getAttribute("idUtilSelectionne"); %>
 			<form name="util" method="post" action="#">
 				<select name="listeUtil">
 				    <c:forEach var="user" items="${listeUtil}">
-				        <option value="${user.id}" ${user.id == selectedId ? 'selected="selected"' : ''}>${user.prenom} ${user.nom}, ${user.email} </option>
+				        <option value="${user.id}" ${user.id == idUtilSelectionne ? 'selected="selected"' : ''}>${user.prenom} ${user.nom}, ${user.email} </option>
 				    </c:forEach>
 				</select>
 				<br>
@@ -95,7 +95,7 @@ import java.util.List;" %>
 			</tr>
 			<c:if test="${sessionScope.idUtilSelectionne != null}">
 			    <%
-				  List<FraisUnique> liste = (List<FraisUnique>) request.getAttribute("listeFrais");
+				  List<FraisUnique> liste = (List<FraisUnique>) session.getAttribute("listeFrais");
 				    for(FraisUnique frais: liste){
 				       out.println(
 				    		   "</td><td> " + frais.getDate() +
@@ -108,6 +108,9 @@ import java.util.List;" %>
 				    		   "</td><td> " + frais.getHebergement() + "€" +
 				    		   "</td></tr>");
 				     }
+			    	if (liste.isEmpty()) {
+			    		out.println("<em>Cet adhérent n'a pas de frais</em>");
+			    	}
 				%>
 			</c:if>
         	

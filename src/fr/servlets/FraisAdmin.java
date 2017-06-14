@@ -137,11 +137,11 @@ public class FraisAdmin extends HttpServlet {
 			rs.next();
 			String idUtil = rs.getString("id_util");
 			request.setAttribute("idUtilSelectionne",idUtil);
-			//ajoute l'attribut à la session:
 			session.setAttribute("idUtilSelectionne", idUtil);
 			List<FraisUnique> list = getFrais(idUtil);
 			request.setAttribute("listeFrais", list);
-			System.out.println(request.getAttribute("idUtilSelectionne"));
+			session.setAttribute("listeFrais", list);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
