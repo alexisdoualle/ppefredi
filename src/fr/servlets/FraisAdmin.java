@@ -30,7 +30,7 @@ public class FraisAdmin extends HttpServlet {
     }
     
   //fonction pour obtenir les frais d'un utilisateur (idUtil) depuis la BDD
-  	public List<FraisUnique> getFrais(String idUtil) {
+  	public List<FraisUnique> getFrais(String idUtil, String year) {
   		ConnexionJdbc connect = new ConnexionJdbc();
   		try {
   			connect.connection();
@@ -41,7 +41,8 @@ public class FraisAdmin extends HttpServlet {
   		//crée une liste de FraisUnique
   	    List<FraisUnique> list=new ArrayList<FraisUnique>();
   	    //requète SQL pour obtenir tous les frais correspondants à l'utilisateur de la session (idUtil)
-  		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil);
+  		String fraisSQL = new String("SELECT * FROM frais WHERE `id_util` = "+ idUtil +" HAVING YEAR(`date_frais`)=" + year);
+  		//System.out.println(fraisSQL);
   		ResultSet rs = connect.executionRequete(fraisSQL);
   	      try {
   	    	 //Pour chaque frais obtenu de la BDD, crée un FraisUnique avec les setters, et le rajoute à la liste
@@ -104,12 +105,14 @@ public class FraisAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int[] listeAnnees = {2017,2016,2015};
 	    /* Récupération de la session depuis la requête */
 	    HttpSession session = request.getSession();
 	    //crée un liste de Utilisateur en appelant la fonction getUtilisateurs()
 		List<Utilisateur> list = getUtilisateurs();
-	
+		
 		request.setAttribute("listeUtil", list);
+		request.setAttribute("listeAnnees", listeAnnees);
 		
 		this.getServletContext().getRequestDispatcher( "/espace-admin/fraisadmin.jsp" ).forward( request, response );
 	}
@@ -138,7 +141,11 @@ public class FraisAdmin extends HttpServlet {
 			String idUtil = rs.getString("id_util");
 			request.setAttribute("idUtilSelectionne",idUtil);
 			session.setAttribute("idUtilSelectionne", idUtil);
-			List<FraisUnique> list = getFrais(idUtil);
+			String anneeSelectionnee=request.getParameter("annee");
+			request.setAttribute("anneeSelectionnee",anneeSelectionnee);
+			session.setAttribute("anneeSelectionnee", anneeSelectionnee);
+			System.out.println(anneeSelectionnee);
+			List<FraisUnique> list = getFrais(idUtil, anneeSelectionnee);
 			request.setAttribute("listeFrais", list);
 			session.setAttribute("listeFrais", list);
 

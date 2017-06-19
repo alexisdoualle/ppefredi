@@ -72,10 +72,16 @@ import java.util.List;" %>
 	        <p>Veuillez choisir un utilisateur:
 	        	
 	        <% String selectedId = (String) request.getAttribute("idUtilSelectionne"); %>
+	        <% String anneeSelectionnee = (String) request.getAttribute("anneeSelectionnee"); %>
 			<form name="util" method="post" action="#">
 				<select name="listeUtil">
 				    <c:forEach var="user" items="${listeUtil}">
 				        <option value="${user.id}" ${user.id == idUtilSelectionne ? 'selected="selected"' : ''}>${user.prenom} ${user.nom}, ${user.email} </option>
+				    </c:forEach>
+				</select>
+				<select name="annee">
+				    <c:forEach var="annee" items="${listeAnnees}">
+				        <option value="${annee}" ${annee == anneeSelectionnee ? 'selected="selected"' : ''}>${annee} </option>
 				    </c:forEach>
 				</select>
 				<br>
@@ -109,7 +115,7 @@ import java.util.List;" %>
 				    		   "</td></tr>");
 				     }
 			    	if (liste.isEmpty()) {
-			    		out.println("<em>Cet adhérent n'a pas de frais</em>");
+			    		out.println("<em>Cet adhérent n'a pas de frais pour la période sélectionnée</em>");
 			    	}
 				%>
 			</c:if>

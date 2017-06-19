@@ -32,7 +32,7 @@ public class ConnexionJdbc {
 	private String dburl = "localhost:8889/FrediDB";
 	private String login = "root";
 	//private String mdp = "ricola";
-	//private String dburl = "localhost:3306/FrediDB";
+	//private String dburl = "localhost:3306/FrediDB"; //pour l'installation raspberry
 	//private String dburl = "176.158.180.214:3306/FrediDB";
 	
 	// L'objet dbConnect de la classe Connection permet de se connecter à la DB
