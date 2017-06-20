@@ -25,14 +25,15 @@ import java.util.logging.Logger;
 
 public class ConnexionJdbc {
 	
-	// parametres connexion à la BD de Mysql
-	
+	// parametres connexion à la BD de Mysql en local:	
 	//private String login = "root";
-	private String mdp = "root";
-	private String dburl = "localhost:8889/FrediDB";
+	//private String mdp = "root";
+	//private String dburl = "localhost:8889/FrediDB";
+	/* Connexion raspberry: */
 	private String login = "root";
-	//private String mdp = "ricola";
-	//private String dburl = "localhost:3306/FrediDB"; //pour l'installation raspberry
+	private String mdp = "ricola";
+	private String dburl = "localhost:3306/FrediDB";
+	
 	//private String dburl = "176.158.180.214:3306/FrediDB";
 	
 	// L'objet dbConnect de la classe Connection permet de se connecter à la DB
